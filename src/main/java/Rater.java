@@ -1,56 +1,45 @@
-import java.util.*;
+import java.util.ArrayList;
 
 /**
- * A Passive Data Structure (PDS) to represent rater data.
+ * An Interface defining the Structure of Rater classes.
  * @author Swastik Kulshreshtha
  * @version 1.0.0
  */
-public class Rater {
-    private String myID;
-    private ArrayList<Rating> myRatings;
+public interface Rater {
+    /**
+     * Adds rating to the specified item in the dataset.
+     * @param item Item ID
+     * @param rating Rating Value
+     */
+    void addRating(String item, double rating);
 
-    public Rater(String id) {
-        myID = id;
-        myRatings = new ArrayList<Rating>();
-    }
+    /**
+     * Checks if rating for the specified item exists.
+     * @param item Item ID
+     * @return boolean
+     */
+    boolean hasRating(String item);
 
-    public void addRating(String item, double rating) {
-        myRatings.add(new Rating(item,rating));
-    }
+    /**
+     * @return Rater ID
+     */
+    String getID();
 
-    public boolean hasRating(String item) {
-        for (Rating myRating : myRatings) {
-            if (myRating.getItem().equals(item)) {
-                return true;
-            }
-        }
-        
-        return false;
-    }
+    /**
+     * Returns the Rating for the specified Item.
+     * @param item Item ID
+     * @return Rating
+     */
+    double getRating(String item);
 
-    public String getID() {
-        return myID;
-    }
+    /**
+     * @return Number of Ratings in the dataset.
+     */
+    int numRatings();
 
-    public double getRating(String item) {
-        for (Rating myRating : myRatings) {
-            if (myRating.getItem().equals(item)) {
-                return myRating.getValue();
-            }
-        }
-        
-        return -1;
-    }
-
-    public int numRatings() {
-        return myRatings.size();
-    }
-
-    public ArrayList<String> getItemsRated() {
-        ArrayList<String> list = new ArrayList<String>();
-        for (Rating myRating : myRatings) {
-            list.add(myRating.getItem());
-        }
-        return list;
-    }
+    /**
+     * Returns the IDs of the Items in the dataset.
+     * @return ArrayList of IDs
+     */
+    ArrayList<String> getItemsRated();
 }

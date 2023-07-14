@@ -53,7 +53,7 @@ public class FirstRatings {
             double rating = Double.parseDouble(record.get(2));
             long time = Long.parseLong(record.get(3));
             Rater i = raters.get(raterID);
-            if (i == null) i = new Rater(raterID);
+            if (i == null) i = new EfficientRater(raterID);
             i.addRating(movieID, rating);
             raters.put(raterID, i);
         }
