@@ -70,6 +70,12 @@ public class ThirdRatings {
         return avgRatings;
     }
 
+    /**
+     * Returns the Average Ratings of the provided Movies with atleast the specified minimum ratings and passing the specified Filter.
+     * @param minimalRaters Minimum Ratings
+     * @param filterCriteria Filter
+     * @return ArrayList containing the Movie ID along with Average Rating
+     */
     public ArrayList<Rating> getAverageRatingsByFilter(int minimalRaters, Filter filterCriteria) {
         ArrayList<String> myMovies = MovieDatabase.filterBy(filterCriteria);
         ArrayList<Rating> avgRatings = new ArrayList<Rating>();
